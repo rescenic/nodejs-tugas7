@@ -6,7 +6,7 @@
 
 ```bash
 -------------------
-1st. Terminal
+First Terminal
 -------------------
 git clone https://github.com/rescenic/nodejs-tugas7.git
 
@@ -16,7 +16,7 @@ npm install
 
 npm run build:watch
 -------------------
-2nd Terminal
+Second Terminal
 -------------------
 cd nodejs-tugas7
 
@@ -54,7 +54,7 @@ npm run start
 }
  ```
 
-#### 2\. POST /api/single
+#### 2\. POST /api/upload/single
 
 - **Description**: Upload a single file.
 
@@ -62,7 +62,7 @@ npm run start
 
 - **Method:** POST
 
-- **URL:** `/upload/single`
+- **URL:** `/api/upload/single`
 
 - **Content-Type:** `multipart/form-data`
 
@@ -106,7 +106,7 @@ npm run start
 {  "error": "Error message"}
  ```
 
-#### 3\. POST /api/multiple
+#### 3\. POST /api/upload/multiple
 
 - Description: Upload multiple files at once.
 
@@ -114,7 +114,7 @@ npm run start
 
 - **Method:** POST
 
-- **URL:** `/upload/multiple`
+- **URL:** `/api/upload/multiple`
 
 - **Content-Type:** `multipart/form-data`
 
