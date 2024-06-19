@@ -1,9 +1,12 @@
+// src/utils/cloudinary.ts
+
 import { v2 as cloudinary } from "cloudinary";
 import {
   CLOUDINARY_API_KEY,
   CLOUDINARY_API_SECRET,
   CLOUDINARY_CLOUD_NAME,
 } from "./env";
+import streamifier from "streamifier";
 
 cloudinary.config({
   cloud_name: CLOUDINARY_CLOUD_NAME,
@@ -11,13 +14,10 @@ cloudinary.config({
   api_secret: CLOUDINARY_API_SECRET,
 });
 
-export const handleUpload = async (file: string) => {
+export const handleUpload = async (buffer: Buffer): Promise<any> => {
   return new Promise((resolve, reject) => {
-    cloudinary.uploader.upload(
-      file,
-      {
-        resource_type: "auto",
-      },
+    const uploadStream = cloudinary.uploader.upload_stream(
+      { resource_type: "auto" },
       (error, result) => {
         if (error) {
           reject(error);
@@ -26,6 +26,8 @@ export const handleUpload = async (file: string) => {
         }
       }
     );
+
+    streamifier.createReadStream(buffer).pipe(uploadStream);
   });
 };
 
